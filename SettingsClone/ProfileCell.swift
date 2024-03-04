@@ -19,10 +19,10 @@ class ProfileCell: UITableViewCell {
         
         profileImageView.layer.cornerRadius = 30 // 60 / 2
         
-        titleLabel.textColor = .blue
+        titleLabel.textColor = .systemBlue
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         
-        descriptionLabel.textColor = .darkGray
+        descriptionLabel.textColor = .black
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
     }
 
