@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingsTableView.dataSource = self
         settingsTableView.delegate = self
+        settingsTableView.dataSource = self
         settingsTableView.backgroundColor = .systemGray6
         
         settingsTableView.register(
@@ -28,7 +28,15 @@ class ViewController: UIViewController {
             UINib(nibName: "MenuCell", bundle: nil),
             forCellReuseIdentifier: "MenuCell"
         )
+        self.title = "Settings"
+        self.view.backgroundColor = .systemGray6
+        
         makeData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func makeData() {
@@ -98,6 +106,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.rightImageView.image = UIImage(systemName: settingModel[indexPath.section][indexPath.row].rightImageName ?? "")
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 && indexPath.row == 0 {
+            if let generalVC = UIStoryboard(name: "GeneralViewController", bundle: nil).instantiateViewController(identifier: "GeneralViewController") as? GeneralViewController {
+                self.navigationController?.pushViewController(generalVC, animated: true)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
