@@ -109,7 +109,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 && indexPath.row == 0 {
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let myIDVC = MyIDViewController(nibName: "MyIDViewController", bundle: nil)
+            self.present(myIDVC, animated: true, completion: nil)
+            
+        } else if indexPath.section == 2 && indexPath.row == 0 {
             if let generalVC = UIStoryboard(name: "GeneralViewController", bundle: nil).instantiateViewController(identifier: "GeneralViewController") as? GeneralViewController {
                 self.navigationController?.pushViewController(generalVC, animated: true)
             }
