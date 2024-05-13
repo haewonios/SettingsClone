@@ -74,6 +74,4 @@ extension GeneralViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
